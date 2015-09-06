@@ -26,8 +26,10 @@ defmodule EmporiumApi.CategoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    category = Repo.get!(Category, id)
-    render conn, "show.json", category: category
+    case Repo.get(Category, id) do
+      nil -> return_error conn, :not_found, "Category isn't found"
+      category -> render conn, "show.json", category: category
+    end
   end
 
   def update(conn, %{"id" => id, "category" => category_params}) do

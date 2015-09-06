@@ -29,6 +29,7 @@ defmodule EmporiumApi.Web do
       alias EmporiumApi.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
+      import Emporium.CommonPlugs
 
       import EmporiumApi.Router.Helpers
     end
